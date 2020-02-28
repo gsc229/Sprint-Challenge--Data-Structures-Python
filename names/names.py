@@ -1,5 +1,6 @@
 import time
-from binary_search_tree import BinarySearchTree as bst
+from binary_search_tree import BinarySearchTree as BsT
+
 
 start_time = time.time()
 
@@ -18,13 +19,25 @@ print("========================FASTER====================================")
 
 # convert names_1.txt to a bst
 
+names_one = BsT(names_1[0])
+print(f"HEAD {names_one.value}")
+
 # Replace the nested for loops below with your improvements
 
+for name in names_1:
+    names_one.insert(name)
 
-for name_1 in names_1:
-    for name_2 in names_2:
-        if name_1 == name_2:
-            duplicates.append(name_1)
+# print(names_one.in_order_print(names_one))
+
+for name in names_2:
+    if names_one.contains(name):
+        duplicates.append(name)
+
+
+# for name_1 in names_1:
+#     for name_2 in names_2:
+#         if name_1 == name_2:
+#             duplicates.append(name_1)
 
 end_time = time.time()
 print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
