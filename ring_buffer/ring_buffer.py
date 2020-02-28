@@ -51,7 +51,10 @@ class RingBuffer:
         list_buffer_contents = []
 
         # TODO: Your code here
-
+        guider = self.storage.head
+        while guider:
+            list_buffer_contents.append(guider.value)
+            guider = guider.next
         return list_buffer_contents
 
 # ----------------Stretch Goal-------------------
@@ -75,6 +78,8 @@ buffer.append('b')
 buffer.append('c')
 buffer.append('d')
 buffer.append('e')
+print(buffer.get())
 
 buffer.append('f')
 buffer.append('g')
+print(buffer.get())
