@@ -13,31 +13,38 @@ names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
 duplicates = []  # Return the list of duplicates in this data structure
-
+duplicates_2 = []
 
 print("========================FASTER====================================")
 
 # convert names_1.txt to a bst
 
-names_one = BsT(names_1[0])
-print(f"HEAD {names_one.value}")
+names_two = BsT(names_2[0])
+print(f"HEAD {names_two.value}")
 
 # Replace the nested for loops below with your improvements
 
-for name in names_1:
-    names_one.insert(name)
+for name in names_2:
+    names_two.insert(name)
 
 # print(names_one.in_order_print(names_one))
 
-for name in names_2:
-    if names_one.contains(name):
-        duplicates.append(name)
+# runtime 2 n log n --> n log n
+for name in names_1:
+    if names_two.contains(name):
+        duplicates_2.append(name)
+
+end_time = time.time()
+print(f"{len(duplicates_2)} duplicates:\n\n{', '.join(duplicates_2)}\n\n")
+print(f"runtime: {end_time - start_time} seconds")
 
 
-# for name_1 in names_1:
-#     for name_2 in names_2:
-#         if name_1 == name_2:
-#             duplicates.append(name_1)
+print("========================SLOWER====================================")
+
+for name_1 in names_1:
+    for name_2 in names_2:
+        if name_1 == name_2:
+            duplicates.append(name_1)
 
 end_time = time.time()
 print(f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
