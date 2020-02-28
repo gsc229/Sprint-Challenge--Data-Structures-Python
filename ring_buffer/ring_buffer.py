@@ -7,9 +7,7 @@ class RingBuffer:
         self.current = None
         self.storage = DoublyLinkedList()
      # test creates a RingBuffer instance with a capacity of 5
-
-    def append(self, item):
-        # append to the tail up to the capacity
+     # append to the tail up to the capacity
         # keep the current as the tail until capacity is reached
         # a app(b) --> a, b etc. current = b
         # a, b, c, d, e at capacity, add 'f'
@@ -19,6 +17,8 @@ class RingBuffer:
         # now f is the current, which meas the oldest is to the right of it 'b'
         # replace b with 'g', set 'g' to current
         # f, g, c, d, e --> add 'h', repeat steps until the current reaches the capacity.
+
+    def append(self, item):
 
         if self.storage.length < self.capacity:
             self.storage.add_to_tail(item)
@@ -30,9 +30,21 @@ class RingBuffer:
             print(f"CURRENT: {self.current.value}")
             if not self.current.next:
                 print("**NO CURRENT.NEXT**")
+                # no current.next so head is oldest, remove the head add the item, set it to current
+                self.storage.remove_from_head()
+                self.storage.add_to_head(item)
+                self.current = self.storage.head
+                print(
+                    f"CURENT: {self.current.value} is STORAGE.HEAD: {self.storage.head.value}")
 
             else:
                 print("**THERE'S A CURRENT.NEXT**")
+                # there's a next. delete the next replace the next with the item, set the new next to  the current.
+                self.current.next.delete()
+                self.current.insert_after(item)
+                self.current = self.current.next
+                print(
+                    f"new item: {item} CURENT UPDATED TO: {self.current.value}")
 
     def get(self):
         # Note:  This is the only [] allowed
@@ -65,3 +77,4 @@ buffer.append('d')
 buffer.append('e')
 
 buffer.append('f')
+buffer.append('g')
