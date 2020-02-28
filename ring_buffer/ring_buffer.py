@@ -83,3 +83,11 @@ print(buffer.get())
 buffer.append('f')
 buffer.append('g')
 print(buffer.get())
+
+buffer.append('h')
+buffer.append('i')
+print(buffer.get())
+
+buffer.append('j')
+buffer.append('k')
+print(buffer.get())

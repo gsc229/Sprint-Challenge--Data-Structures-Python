@@ -1,4 +1,5 @@
 import time
+from binary_search_tree import BinarySearchTree as bst
 
 start_time = time.time()
 
@@ -12,7 +13,14 @@ f.close()
 
 duplicates = []  # Return the list of duplicates in this data structure
 
+
+print("========================FASTER====================================")
+
+# convert names_1.txt to a bst
+
 # Replace the nested for loops below with your improvements
+
+
 for name_1 in names_1:
     for name_2 in names_2:
         if name_1 == name_2:
